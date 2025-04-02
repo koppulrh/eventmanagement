@@ -29,7 +29,8 @@ public class SecurityConfig {
                 .csrf().disable()
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/public/**").permitAll()
-                        .requestMatchers("/api/event/**").authenticated()  // Protecting event endpoints
+                        .requestMatchers("/api/event/**").authenticated()
+                        .requestMatchers("/api/ticket/**").authenticated()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
